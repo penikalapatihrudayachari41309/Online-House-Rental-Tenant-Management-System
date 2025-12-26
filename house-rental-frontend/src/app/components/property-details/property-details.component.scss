@@ -1,0 +1,54 @@
+.property-details-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+
+  p {
+    margin-top: 16px;
+    color: #666;
+  }
+}
+
+.property-details {
+  .property-card {
+    max-width: 100%;
+
+    img {
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .description {
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+
+    .rent {
+      font-size: 1.2em;
+      color: #1976d2;
+      margin: 8px 0;
+    }
+
+    .amenities {
+      margin: 8px 0;
+    }
+  }
+}
+
+.error {
+  text-align: center;
+  padding: 40px;
+
+  p {
+    margin-bottom: 16px;
+    color: #666;
+  }
+}

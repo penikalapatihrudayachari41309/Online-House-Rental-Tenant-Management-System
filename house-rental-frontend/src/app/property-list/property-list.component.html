@@ -1,0 +1,40 @@
+<div class="property-list-container">
+  <h1>Available Properties</h1>
+
+  <!-- Filters -->
+  <div class="filters">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="searchTerm" (input)="applyFilters()" placeholder="Search by title or description">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Location</mat-label>
+      <input matInput [(ngModel)]="locationFilter" (input)="applyFilters()" placeholder="Filter by location">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Max Budget</mat-label>
+      <input matInput type="number" [(ngModel)]="budgetFilter" (input)="applyFilters()" placeholder="Max rent">
+    </mat-form-field>
+  </div>
+
+  <!-- Property Cards -->
+  <div class="property-grid">
+    <mat-card *ngFor="let property of filteredProperties" class="property-card">
+      <mat-card-header>
+        <mat-card-title>{{ property.title }}</mat-card-title>
+        <mat-card-subtitle>{{ property.location }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="getPhotoUrl(property.photos)" [alt]="property.title">
+      <mat-card-content>
+        <p>{{ property.description }}</p>
+        <p><strong>Rent:</strong> ${{ property.rent }}/month</p>
+        <p><strong>Amenities:</strong> {{ property.amenities }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/properties', property.id]">View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

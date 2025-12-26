@@ -1,0 +1,18 @@
+<div class="booking-request" *ngIf="property">
+  <h1>Request Booking for {{ property.title }}</h1>
+  <div class="property-summary">
+    <img [src]="property.photos || 'https://via.placeholder.com/300x200'" [alt]="property.title">
+    <p><strong>Location:</strong> {{ property.location }}</p>
+    <p><strong>Rent:</strong> ${{ property.rent }}/month</p>
+  </div>
+
+  <button (click)="submitBooking()" class="submit-btn">Submit Booking Request</button>
+
+  <div *ngIf="bookingSuccess" class="success-message">
+    Booking request submitted successfully! Redirecting...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

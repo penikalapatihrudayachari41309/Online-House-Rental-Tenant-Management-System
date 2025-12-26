@@ -1,0 +1,41 @@
+<div class="property-details-container">
+  <div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Loading property details...</p>
+  </div>
+
+  <div *ngIf="!loading && property" class="property-details">
+    <mat-card class="property-card">
+      <mat-card-header>
+        <mat-card-title>{{ property.title }}</mat-card-title>
+        <mat-card-subtitle>{{ property.location }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image [src]="property.photos || '/assets/default-property.jpg'" [alt]="property.title">
+
+      <mat-card-content>
+        <p class="description">{{ property.description }}</p>
+        <p class="rent"><strong>Rent: ${{ property.rent }}/month</strong></p>
+        <p class="amenities"><strong>Amenities:</strong> {{ property.amenities }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/booking', property.id]">
+          Book Now
+        </button>
+        <button mat-button [routerLink]="['/properties']">
+          Back to Properties
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && !property" class="error">
+    <mat-card>
+      <mat-card-content>
+        <p>Property not found.</p>
+        <button mat-button [routerLink]="['/properties']">Back to Properties</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

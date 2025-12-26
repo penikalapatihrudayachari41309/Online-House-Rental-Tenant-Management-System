@@ -1,0 +1,43 @@
+<div class="booking-request-container">
+  <h1>Request Booking</h1>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading && property">
+    <mat-card class="property-summary">
+      <mat-card-header>
+        <mat-card-title>{{ property.title }}</mat-card-title>
+        <mat-card-subtitle>{{ property.location }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Rent: ${{ property.rent }}/month</p>
+      </mat-card-content>
+    </mat-card>
+
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="booking-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Tenant ID</mat-label>
+        <input matInput formControlName="tenant_id" required>
+        <mat-error *ngIf="bookingForm.get('tenant_id')?.invalid && bookingForm.get('tenant_id')?.touched">
+          Tenant ID is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="bookingForm.invalid || submitting">
+          {{ submitting ? 'Submitting...' : 'Submit Booking Request' }}
+        </button>
+        <button mat-button type="button" [routerLink]="['/properties', propertyId]">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="!loading && !property" class="not-found">
+    <p>Property not found.</p>
+    <button mat-raised-button [routerLink]="['/properties']">Back to Properties</button>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+.property-list-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 8px;
+    color: #1976d2;
+  }
+
+  p {
+    font-size: 1.1em;
+    color: #666;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+
+  p {
+    margin-top: 16px;
+    color: #666;
+  }
+}
+
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+
+  .property-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .description {
+      margin: 12px 0;
+      line-height: 1.4;
+    }
+
+    .rent {
+      font-size: 1.2em;
+      color: #1976d2;
+      margin: 8px 0;
+    }
+  }
+}
+
+.no-properties {
+  text-align: center;
+  padding: 60px 20px;
+
+  p {
+    margin: 8px 0;
+    color: #666;
+  }
+}
